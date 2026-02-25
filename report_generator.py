@@ -7,6 +7,8 @@ import argparse
 
 
 def parse_arguments():
+    """Парсинг аргументов переданных в терминал при запуске программы"""
+
     arg_parser = argparse.ArgumentParser()
     arg_parser.add_argument(
         "--files",
@@ -25,6 +27,8 @@ def parse_arguments():
 
 
 def get_files(file_paths: List[str]):
+    """Получение файлов с проверкой наличия и расширения"""
+
     files = []
     for file_path in file_paths:
         path = Path(file_path)
@@ -40,6 +44,8 @@ def get_files(file_paths: List[str]):
 
 
 def average_gdp(files: List[str]) -> None:
+    """Формирование и вывод отчёта среднего ВВП по странам"""
+    
     country_data: dict = defaultdict(lambda: {"sum_gdp": 0, "count": 0})
     average_gdp_report = []
     csv_files = get_files(files)
@@ -75,7 +81,7 @@ def average_gdp(files: List[str]) -> None:
 def main():
     args = parse_arguments()
     match args.report:
-        case "average_gdp":
+        case "average-gdp":
             average_gdp(args.files)
 
 
