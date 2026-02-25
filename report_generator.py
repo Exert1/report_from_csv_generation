@@ -32,6 +32,8 @@ def get_files(file_paths: List[str]):
             raise FileNotFoundError("Путь не существует")
         if not path.is_file():
             raise FileNotFoundError("Это не файл (возможно, директория)")
+        if not path.suffix.lower() == ".csv":
+            raise TypeError("Неверное расширение файла. Необходим .csv файл")
         files.append(path)
 
     return files
